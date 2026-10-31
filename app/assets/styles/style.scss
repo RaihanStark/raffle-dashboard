@@ -1,0 +1,514 @@
+@import "./config";
+
+@font-face {
+  font-family: Proxima;
+  src: url(../fonts/proxima-regular.otf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: Proxima;
+  src: url(../fonts/proxima-semibold.otf);
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: Proxima;
+  src: url(../fonts/proxima-bold.otf);
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: DidactGothic;
+  src: url(../fonts/DidactGothic-Regular.ttf);
+}
+
+.navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  span {
+    color: rgba(255, 255, 255, 0.8) !important;
+  }
+}
+
+body {
+  background: url("../images/login_bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  font-family: Proxima !important;
+}
+
+// .overlay {
+//   background-color: rgba($color: #000000, $alpha: 0.5);
+//   width: 100vw;
+//   height: 100vh;
+//   position: fixed;
+//   z-index: -1;
+//   left: 0;
+//   top: 0;
+// }
+
+.modal-backdrop {
+  z-index: 0;
+}
+::-webkit-scrollbar {
+  width: 8px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: #c2c9d2;
+}
+
+a:link {
+  text-decoration: none !important;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-semibold {
+  font-weight: 600 !important;
+}
+
+.text-bold {
+  font-weight: 700 !important;
+}
+
+.text-white {
+  color: white !important;
+}
+
+.text-brand {
+  color: $brand-color !important;
+}
+
+.text-red-soft {
+  color: $red-soft !important;
+}
+
+.text-purple {
+  color: $purple-color !important;
+}
+
+.logo {
+  width: 250px;
+}
+
+p {
+  margin: 0;
+}
+
+#login-container {
+  height: 100vh;
+}
+
+#app-form {
+  // background: url("../images/bg_login_form.png");
+  // background-repeat: no-repeat;
+  // background-size: cover;
+
+  background-color: #3e149f;
+
+  width: 21rem;
+  // height: 21rem;
+
+  border-radius: 1rem;
+
+  a {
+    font-size: 0.9rem;
+  }
+}
+
+#app-text {
+  color: white;
+  font-weight: 600;
+
+  font-size: 1.1em;
+}
+
+.form-input {
+  border: 0;
+  background-color: rgba(255, 255, 255, 0.2);
+
+  width: 100%;
+  height: 40px;
+
+  color: white;
+  border-radius: 6px;
+
+  margin-bottom: 0.3em;
+  text-align: center;
+
+  padding: 0 1em;
+
+  &::placeholder {
+    text-align: center;
+    color: white;
+    opacity: 0.5;
+  }
+
+  &.invalid {
+    border: red 1px solid;
+  }
+
+  option {
+    background-color: #4416a8;
+  }
+}
+
+.form-textarea {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 0.5em 1em 0 1em;
+  border: 0px;
+  border-radius: 0.4em;
+  width: 100%;
+  &::placeholder {
+    color: white;
+    opacity: 0.5;
+  }
+}
+
+.form-submit {
+  width: 17rem;
+  height: 40px;
+  border: 0;
+  color: #743ae8;
+  background-color: white;
+  border-radius: 6px;
+  transition: all ease-in-out 100ms;
+  &:hover {
+    color: white;
+    background-color: #743ae8;
+  }
+}
+
+.msg {
+  width: 21rem;
+  background-color: white;
+  border-radius: 0.75em;
+  padding: 0.5em;
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+body.dashboard {
+  background: url("../images/dashboard_bg.png") no-repeat center center fixed;
+  // background-repeat: no-repeat;
+  // background-size:cover;
+  // height: 100%;
+  background-position: center;
+
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: Proxima !important;
+}
+
+.glow-checkbox::before {
+  -webkit-box-shadow: 0px 0px 31px 1px rgba(245, 0, 87, 0.4);
+  box-shadow: 0px 0px 31px 1px rgba(245, 0, 87, 0.4);
+}
+
+.nav-item {
+  margin-top: -2em;
+  padding-left: 0;
+  padding-top: 2em;
+
+  &.active {
+    background-color: rgba($color: #fff, $alpha: 0.3);
+    border-bottom: 3px solid $brand-color;
+    border-radius: 0.2em;
+  }
+  &:hover {
+    background-color: rgba($color: #fff, $alpha: 0.3);
+    border-bottom: 3px solid $brand-color;
+    border-radius: 0.2em;
+  }
+}
+
+.navbar-logo {
+  width: 100px;
+}
+
+.card-gradient {
+  // background-image: url("./../images/bg-checkout.png");
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  // background-position: center;
+
+  background-color: #3e149f;
+
+  width: auto;
+
+  border-radius: 1em;
+
+  padding: 1.5em;
+
+  .card-header-app {
+    font-size: 1.3rem;
+    background-color: black;
+  }
+
+  .info {
+    h1 {
+      color: rgba($color: #fff, $alpha: 0.7);
+      margin: 0;
+    }
+
+    a {
+      display: block;
+      white-space: nowrap;
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  .profiles-info {
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid rgba($color: #fff, $alpha: 0.2);
+    a {
+      font-size: 0.9rem;
+    }
+
+    .fa-check {
+      color: $green-color;
+    }
+
+    .profile-label {
+      color: rgba($color: #fff, $alpha: 0.6);
+    }
+  }
+
+  h6 {
+    margin: 0;
+  }
+
+  .card-image {
+    width: 100%;
+
+    .check-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
+}
+
+.card-app-gradient {
+  // background-image: url("./../images/bg-checkout.png");
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  // background-position: center;
+
+  background-color: #3e149f;
+
+  width: auto;
+
+  border-radius: 1em;
+
+  .card-app-header {
+    height: 4rem;
+
+    padding: 1rem 1.5rem;
+
+    border-top-right-radius: inherit;
+    border-top-left-radius: inherit;
+
+    background-color: rgba(0, 0, 0, 0.1);
+    h1 {
+      font-size: 1.2rem;
+      margin: 0;
+    }
+    a {
+      font-size: 0.9rem;
+      color: $purple-color;
+      font-weight: 700;
+    }
+  }
+
+  .darker-header {
+    background-color: rgba($color: #000, $alpha: 0.1);
+  }
+
+  .app-input-start {
+    padding-left: 1rem;
+    text-align: start;
+
+    &::placeholder {
+      text-align: start;
+    }
+  }
+
+  .app-success-color {
+    color: $green-color;
+  }
+
+  .app-label {
+    color: white;
+  }
+
+  .btn-white {
+    background-color: white;
+    font-size: 0.9rem;
+    color: #743ae8;
+    font-weight: 700;
+
+    &:hover {
+      color: white;
+      background-color: #743ae8;
+    }
+  }
+
+  .sidebar {
+    -webkit-box-shadow: -33px 3px 57px 0px rgba(0, 0, 0, 0.28);
+    -moz-box-shadow: -33px 3px 57px 0px rgba(0, 0, 0, 0.28);
+    box-shadow: -33px 3px 57px 0px rgba(0, 0, 0, 0.28);
+
+    background-color: $purple-darker-color;
+
+    border-top-right-radius: 1em;
+    border-bottom-right-radius: 1em;
+    .credit-card-field {
+      label {
+        display: block;
+      }
+      input {
+        width: 100%;
+      }
+
+      input::placeholder {
+        text-align: start;
+        padding-left: 1em;
+      }
+    }
+  }
+}
+
+.releases {
+  width: auto;
+  overflow-x: auto;
+  .shoes {
+    img {
+      width: 200px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 0.8em;
+    }
+
+    a {
+      background-color: #310e7b;
+      width: 9em;
+      cursor: pointer;
+    }
+
+    &.selected {
+      img {
+        border: 3px solid rgb(214, 52, 74);
+      }
+
+      a {
+        border: 2px solid rgb(214, 52, 74);
+      }
+    }
+  }
+}
+
+.action {
+  width: 100%;
+
+  label {
+    font-size: 0.8em;
+  }
+  input {
+    width: 100%;
+  }
+
+  input::placeholder {
+    font-size: 0.8em;
+    text-align: center;
+  }
+}
+
+.table-app {
+  th,
+  tr {
+    color: white;
+  }
+
+  tr {
+    // background-color: rgba($color: #000, $alpha: .1);
+    margin: 1em 0;
+  }
+  th:first-of-type {
+    text-align: center;
+  }
+  tbody {
+    tr {
+      &:nth-child(even) {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+    }
+
+    .btn-tasks-icon {
+      color: $purple-color;
+    }
+  }
+}
+
+.swal2-popup {
+  background: #321a66 !important;
+
+  .swal2-title,
+  .swal2-content {
+    color: white;
+  }
+}
+
+@media (min-width: 576px) {
+  .logo {
+    width: 350px;
+  }
+  .modal-dialog {
+    max-width: unset;
+    margin: unset;
+  }
+
+  .modal {
+    top: 0 !important;
+    left: 0;
+    right: 0;
+  }
+}
+
+// Small devices (landscape phones, more than 768px)
+@media (min-width: 767.98px) {
+  .modal {
+    position: fixed;
+    top: 25% !important;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// Medium devices (tablets, less than 992px)
+@media (max-width: 991.98px) {
+  .nav-item {
+    margin-top: unset;
+    padding-top: unset;
+  }
+}

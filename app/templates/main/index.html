@@ -1,0 +1,94 @@
+{% extends 'layouts/base_dashboard.html' %} {% block content %} {% include
+'partials/_navbar.html' %}
+<div class="container mt-5">
+  {% with messages = get_flashed_messages() %} {% if messages %}
+
+  <div class="row">
+    <div class="col">
+      <div class="card-gradient">
+        <div class="info">
+          <a class="text-bold text-white">Information </a>
+        </div>
+        <p class="text-white">
+          {% for message in messages %} {{ message }} {% endfor %}
+        </p>
+      </div>
+    </div>
+  </div>
+  {% endif %} {% endwith %}
+
+  <div class="row mt-3">
+    <div class="col-md-3">
+      <div class="card-gradient d-flex">
+        <div class="info">
+          <a class="text-bold text-white">Raffles Available </a>
+          <h1 class="text-semibold">{{list_of_raffle}}</h1>
+        </div>
+        <div class="card-image d-flex justify-content-end">
+          <img
+            src="{{url_for('static', filename='images/check-circle.png')}}"
+            class="check-icon align-self-center"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card-gradient mt-3 mt-md-0 d-flex">
+        <div class="info">
+          <a class="text-bold text-white">Raffles Submitted</a>
+          <h1 class="text-semibold">0</h1>
+        </div>
+        <div class="card-image d-flex justify-content-end">
+          <img
+            src="{{url_for('static', filename='images/arrow-circle.png')}}"
+            class="check-icon align-self-center"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div
+        class="card-gradient mt-3 pb-1 mt-md-0 d-flex flex-column"
+        style="height: 100%;"
+      >
+        <div class="info">
+          <a class="text-bold text-white mb-1">Account Information</a>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="profiles-info d-flex justify-content-between">
+              <a class="profile-label">Profiles</a>
+              <a class="text-white"
+                >{{list_of_profiles}} <i class="fas fa-check ml-2"></i
+              ></a>
+            </div>
+            <div class="profiles-info d-flex justify-content-between">
+              <a class="profile-label">Proxies</a>
+              <a class="text-white"
+                >{{list_of_proxies}} Group Proxies
+                <i class="fas fa-check ml-2"></i
+              ></a>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="profiles-info d-flex justify-content-between">
+              <a class="profile-label">Anti Captcha Balance</a>
+              <a class="text-white"
+                >${{balance}} <i class="fas fa-check ml-2"></i
+              ></a>
+            </div>
+            <div class="profiles-info d-flex justify-content-between">
+              <a class="profile-label">Status</a>
+              <a class="text-white"
+                >Activated <i class="fas fa-check ml-2"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% include 'partials/_tasks.html' %}
+</div>
+{% endblock %}
