@@ -1,6 +1,17 @@
 from flask import current_app
 from flask_login import AnonymousUserMixin, UserMixin
-from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
+try:
+    from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
+except ImportError:
+    from itsdangerous import URLSafeTimedSerializer
+    class Serializer:
+        def __init__(self, secret_key, expires_in=None):
+            self.s = URLSafeTimedSerializer(secret_key)
+            self.expires_in = expires_in
+        def dumps(self, obj):
+            return self.s.dumps(obj)
+        def loads(self, token, max_age=None):
+            return self.s.loads(token, max_age=max_age or self.expires_in)
 from itsdangerous import BadSignature, SignatureExpired
 from werkzeug.security import check_password_hash, generate_password_hash
 

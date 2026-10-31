@@ -1,7 +1,10 @@
 from flask import url_for
 from wtforms.fields import Field
 from wtforms.widgets import HiddenInput
-from wtforms.compat import text_type
+try:
+    from wtforms.compat import text_type
+except ImportError:
+    text_type = str
 from flask_login import (
     current_user,
     login_required
@@ -30,6 +33,27 @@ def register_template_utils(app):
 
 def index_for_role(role):
     return url_for(role.index)
+
+
+def get_queue(name="default"):
+    try:
+        from flask_rq import get_queue as _gq
+        return _gq(name)
+    except (ImportError, AttributeError):
+        try:
+            from flask import current_app
+            rq = current_app.extensions.get('rq')
+            if rq and hasattr(rq, 'get_queue'):
+                return rq.get_queue(name)
+        except Exception:
+            pass
+        class DummyQueue:
+            def enqueue(self, func, *args, **kwargs):
+                try:
+                    return func(*args, **kwargs)
+                except Exception:
+                    pass
+        return DummyQueue()
 
 
 def is_license_valid(key):

@@ -5,16 +5,16 @@ from flask import (
     render_template,
     request,
     url_for,
-    Markup,
     session
 )
+from markupsafe import Markup
 from flask_login import (
     current_user,
     login_required,
     login_user,
     logout_user,
 )
-from flask_rq import get_queue
+from app.utils import get_queue
 
 from app import db
 from app.account.forms import (

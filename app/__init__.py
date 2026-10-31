@@ -1,6 +1,6 @@
 import os
 
-from flask_migrate import Migrate, MigrateCommand
+from flask_migrate import Migrate
 from flask import Flask
 from flask_assets import Environment
 from flask_compress import Compress
@@ -51,9 +51,9 @@ def create_app(config):
     RQ(app)
     migrate = Migrate(app, db)
 
-    sentry_sdk.init(
-    dsn="https://641e6edbec9744c2915f27b0e5241d11@o393633.ingest.sentry.io/5242986",
-    integrations=[FlaskIntegration()])
+    sentry_dsn = os.getenv('SENTRY_DSN')
+    if sentry_dsn:
+        sentry_sdk.init(dsn=sentry_dsn, integrations=[FlaskIntegration()])
 
     # Register Jinja template functions
     from .utils import register_template_utils
