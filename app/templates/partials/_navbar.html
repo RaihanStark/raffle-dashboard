@@ -7,21 +7,19 @@
         </button>
 
         {% set navigation_bar = [
-            (url_for('main.index') ,'Dashboard'),
+            (url_for('main.index'), 'Dashboard'),
             (url_for('main.tasks'), 'Tasks'),
-            ('/',  'Accounts'),
-            (url_for('main.proxies'),  'Proxies'),
-            (url_for('main.profiles'),  'Profiles'),
-            (url_for('account.settings'),  'Settings'),
-            ('/',  'Documentations'),
-            (url_for('account.logout'),  'Logout')
+            (url_for('main.proxies'), 'Proxies'),
+            (url_for('main.profiles'), 'Profiles'),
+            (url_for('account.settings'), 'Settings'),
+            (url_for('account.logout'), 'Logout')
         ] -%}
         {% set active_page = active_page|default('Dashboard') -%}
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto mt-3">
                 {% for href, caption in navigation_bar %}
-                    <li  {% if caption == active_page %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
-                        <a class="nav-link text-white mx-1" href="{{href|e}}">{{caption|e}}</span></a>
+                    <li {% if caption == active_page %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
+                        <a class="nav-link text-white mx-1" href="{{href|e}}">{{caption|e}}</a>
                     </li>
                 {% endfor %}
             </ul>
