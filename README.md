@@ -1,6 +1,8 @@
 # Raffle Dashboard
 
-A Flask web dashboard for sneaker raffle entry automation, task management, proxy pools, and Discord webhook notifications.
+A Flask web dashboard for sneaker raffle task management, proxy pools, and Discord webhook notifications.
+
+> **Note**: This repository contains the **web dashboard interface only**. The underlying raffle automation engine and background task workers are proprietary software and are not included in this repository.
 
 ## Screenshots
 
@@ -12,60 +14,39 @@ A Flask web dashboard for sneaker raffle entry automation, task management, prox
 
 ## Features
 
-- **Dashboard Overview**: Monitor active raffles, submitted entries, and account/balance status.
-- **Task Management**: Configure automated entry tasks with sneaker sizes, entry limits, and linked profiles/proxies.
-- **Proxy Pool Manager**: Bulk import proxies, organize proxy groups, and filter valid host:port lists.
-- **Profiles & Billing**: Manage shipping addresses and billing profiles.
-- **Webhook Notifications**: Real-time Discord embeds for task status and raffle submission updates.
-- **User Roles & Administration**: Role-based permissions (Admin / User), user invitations, and account settings.
-- **Anti-Captcha Integration**: Integrated balance check and solver key management.
+- **Raffle Overview**: Monitor available releases, active tasks, and status metrics.
+- **Task Management**: Configure entry tasks, select sneaker sizes, and assign proxies/profiles.
+- **Proxy Pool Manager**: Organize proxy groups and import proxy lists (`host:port:user:pass`).
+- **Profile Manager**: Manage shipping details and billing profiles.
+- **Discord Webhook Alerts**: Webhook notification payloads for task status updates.
 
-## Tech Stack
+## Quick Start
 
-- **Backend**: Python, Flask, Flask-SQLAlchemy, RQ, WTForms
-- **Database**: PostgreSQL / SQLite
-- **Cache & Queue**: Redis
-- **Frontend**: Jinja2 templates, Bootstrap 4, SCSS
-
-## Getting Started
-
-### 1. Prerequisites
-- Python 3.8+
-- PostgreSQL
-- Redis
-
-### 2. Environment Setup
-Create a virtual environment and install dependencies:
+### 1. Installation
 
 ```bash
+git clone https://github.com/RaihanStark/raffle-dashboard.git
+cd raffle-dashboard
+
 python3 -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate.bat
+source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 3. Configuration
-Create a `config.env` file in the project root:
-
-```env
-SECRET_KEY=your_generated_secret_key
-ADMIN_EMAIL=admin@example.com
-ADMIN_PASSWORD=admin123
-WEBHOOK_TEST_URL=https://discord.com/api/webhooks/your_webhook_url
-```
-
-### 4. Database Setup
-Initialize the schema and seed default roles:
+### 2. Database Setup
 
 ```bash
 python manage.py recreate_db
 python manage.py setup_dev
-
-# Optional: populate fake data for testing
 python manage.py add_fake_data
 ```
 
-### 5. Run
+### 3. Run
+
 ```bash
-honcho start -e config.env -f Local
+python manage.py run
 ```
-Visit [http://localhost:5000](http://localhost:5000) in your browser.
+
+Open [http://localhost:5000](http://localhost:5000) and log in:
+- **Username**: `admin`
+- **Password**: `admin123`
