@@ -59,7 +59,11 @@ $(document).ready(function () {
           $.LoadingOverlay("hide");
           $("#raffle-id").val(response.id);
           $("#raffle-id").attr("value", response.id);
-          $("#raffle-variant").val(response.name.split(" - ")[1]);
+          $("#raffle-variant").val(
+            response.name.indexOf(" - ") !== -1
+              ? response.name.split(" - ")[1]
+              : response.name
+          );
           $("#size").empty();
           $.each(JSON.parse(response.size), function (
             indexInArray,

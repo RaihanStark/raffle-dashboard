@@ -26,7 +26,7 @@ active_page = "Tasks" %} {% include 'partials/_navbar.html' %}
                 data-name="{{product.name}}"
                 data-id="{{product.id}}"
               >
-                <img class="lazy" data-src="{{product.thumbnail}}" alt="" />
+                <img src="{{ product.get_thumbnail_url() }}" alt="{{ product.name }}" />
                 <div class="d-flex justify-content-center">
                   <a class="btn btn-shoes_edit text-white mt-n3"
                     >{{product.get_brand()}}</a
@@ -167,7 +167,11 @@ active_page = "Tasks" %} {% include 'partials/_navbar.html' %}
         $("#raffle-id").val(response.id);
         $("#raffle-id").attr("value", response.id);
 
-        $("#raffle-variant").val(response.name.split(" - ")[1]);
+        $("#raffle-variant").val(
+          response.name.indexOf(" - ") !== -1
+            ? response.name.split(" - ")[1]
+            : response.name
+        );
 
         $("#size").empty();
         $.each(JSON.parse(response.size), function (

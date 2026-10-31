@@ -23,7 +23,7 @@
                   data-name="{{product.name}}"
                   data-id="{{product.id}}"
                 >
-                  <img class="lazy" data-src="{{product.thumbnail}}" alt="" />
+                  <img src="{{ product.get_thumbnail_url() }}" alt="{{ product.name }}" />
                   <div class="d-flex justify-content-center">
                     <a class="btn btn-shoes text-white mt-n3"
                       >{{product.get_brand()}}</a

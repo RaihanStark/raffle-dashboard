@@ -434,10 +434,7 @@ class Product(db.Model):
         ]
 
         thumbnails = [
-            "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_2000,h_2000/global/371777/01/sv01/fnd/PNA/fmt/png/Rise-Women's-Sneakers",
-            "https://wwws.dior.com/couture/ecommerce/media/catalog/product/cache/1/zoom_image_2/3000x2000/17f82f742ffe127f42dca9de82fb58b1/u/j/1554385504_3SH118YJP_H069_E02_ZH.jpg",
-            "https://bobobobo-s3.dexecure.net/5dd8eac362f58.jpg",
-            "https://cdn.shopify.com/s/files/1/0238/2821/products/Womens-193-Royale-Blanco-3RMW-Product-102.jpg?v=1563992609"
+            "yeezy.jpg"
         ]
 
         sizes = ["US 3", "US 4", "US 5", "US 6", "US 7", "US 8", "US 9"]
@@ -463,10 +460,31 @@ class Product(db.Model):
                 db.session.rollback()
 
     def get_variant(self):
-        return self.name.split(' - ')[1]
+        parts = self.name.split(' - ')
+        return parts[1] if len(parts) > 1 else self.name
 
     def get_brand(self):
         return self.name.split(' - ')[0]
+
+    def get_thumbnail_url(self):
+        if self.thumbnail:
+            if self.thumbnail.startswith('http://') or self.thumbnail.startswith('https://'):
+                return self.thumbnail
+            if self.thumbnail.startswith('/static/'):
+                return self.thumbnail
+            import os
+            from flask import current_app, url_for
+            try:
+                static_img_path = os.path.join(current_app.static_folder, 'images', self.thumbnail)
+                if os.path.exists(static_img_path):
+                    return url_for('static', filename=f'images/{self.thumbnail}')
+            except Exception:
+                pass
+        from flask import url_for
+        try:
+            return url_for('static', filename='images/yeezy.jpg')
+        except Exception:
+            return '/static/images/yeezy.jpg'
 
     def __repr__(self):
         return '<Product %s>' % self.name
