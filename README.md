@@ -25,8 +25,8 @@ A Flask web dashboard for sneaker raffle task management, proxy pools, and Disco
 ### 1. Installation
 
 ```bash
-git clone https://github.com/RaihanStark/raffle-dashboard.git
-cd raffle-dashboard
+git clone https://github.com/RaihanStark/raffle-web-dashboard.git
+cd raffle-web-dashboard
 
 python3 -m venv venv
 source venv/bin/activate
