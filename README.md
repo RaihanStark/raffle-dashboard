@@ -2,6 +2,14 @@
 
 A Flask web dashboard for sneaker raffle entry automation, task management, proxy pools, and Discord webhook notifications.
 
+## Screenshots
+
+| Dashboard Overview | Task Creation & Release Selection |
+| :---: | :---: |
+| ![Dashboard Overview](docs/screenshots/dashboard.png) | ![Task Creation](docs/screenshots/create_task.png) |
+| **Proxy Pool Manager** | **Profiles & Billing** |
+| ![Proxy Management](docs/screenshots/proxies.png) | ![Profile Management](docs/screenshots/profiles.png) |
+
 ## Features
 
 - **Dashboard Overview**: Monitor active raffles, submitted entries, and account/balance status.
